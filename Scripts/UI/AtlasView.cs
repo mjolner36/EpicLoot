@@ -49,7 +49,7 @@ public partial class AtlasView : Control
 
 	private static float Diameter(AtlasNodeType t) => t switch
 	{
-		AtlasNodeType.Start => 64,
+		AtlasNodeType.Start => 72,
 		AtlasNodeType.Keystone => 70,
 		AtlasNodeType.Notable => 54,
 		_ => 40,
@@ -103,16 +103,10 @@ public partial class AtlasView : Control
 			b.AddThemeStyleboxOverride("hover", Style(fill.Lightened(0.2f), Colors.White));
 			b.AddThemeStyleboxOverride("pressed", Style(fill.Darkened(0.2f), Colors.White));
 			b.AddThemeStyleboxOverride("disabled", Style(fill, border));
-			b.Disabled = !gs.CanEnter(id) && node.Type != AtlasNodeType.Start;
-			b.MouseDefaultCursorShape = gs.CanEnter(id) ? CursorShape.PointingHand : CursorShape.Arrow;
+			b.MouseDefaultCursorShape = CursorShape.PointingHand;
 			b.TooltipText = Tooltip(node, state);
-			b.Text = node.Type switch
-			{
-				AtlasNodeType.Keystone => "K",
-				AtlasNodeType.Notable => "N",
-				AtlasNodeType.Start => "",
-				_ => "",
-			};
+			// На узле — тир локации, на старте — устройство карт.
+			b.Text = node.Type == AtlasNodeType.Start ? "Карты" : $"T{node.Tier}";
 			b.AddThemeColorOverride("font_color", state == AtlasNodeState.Completed ? Colors.Black : border);
 			b.AddThemeColorOverride("font_disabled_color", border);
 		}
@@ -125,18 +119,19 @@ public partial class AtlasView : Control
 		var lines = new List<string> { $"{node.DisplayName} ({node.TypeName})" };
 		if (node.Type == AtlasNodeType.Start)
 		{
-			lines.Add("Начало пути");
+			lines.Add("Устройство карт: положите карту и откройте локацию");
+			lines.Add($"Карт в тайнике: {gs.Profile.Maps.Count}");
 			return string.Join("\n", lines);
 		}
+		lines.Add($"Тир T{node.Tier}");
 		lines.Add($"Пассивка: {node.PassiveDescription}");
-		var mods = node.LocationModifiers?.Where(m => m != null).Select(m => m.DisplayName).ToArray() ?? Array.Empty<string>();
-		lines.Add(mods.Length > 0 ? $"Модификаторы: {string.Join(", ", mods)}" : "Модификаторы: нет");
-		lines.Add($"Шаг {gs.Atlas.DepthOf(node.Id)} от старта");
+		lines.Add($"Карт этой локации в тайнике: {gs.Profile.MapCount(node)}");
+		if (gs.CanOpenFree(node)) lines.Add("Открывается бесплатно (T1)");
 		lines.Add(state switch
 		{
-			AtlasNodeState.Completed => "Пройден",
-			AtlasNodeState.Available => "Доступен",
-			_ => "Закрыт",
+			AtlasNodeState.Completed => "Пройден: пассивка активна",
+			AtlasNodeState.Available => "Доступен: карты этой локации могут выпасть",
+			_ => "Закрыт: пройдите соседний узел",
 		});
 		return string.Join("\n", lines);
 	}

@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "damage"
+DisplayName = "Весь урон"
 Text = "+{0}% ко всему урону"
 Stat = 3
 Type = 1
-TierMin = PackedFloat32Array(0.14, 0.09, 0.04)
-TierMax = PackedFloat32Array(0.18, 0.13, 0.08)
-AllowedSlots = PackedInt32Array(0, 6, 5)
+IsPrefix = true
+TierMin = PackedFloat32Array(0.03, 0.06, 0.09, 0.13, 0.17)
+TierMax = PackedFloat32Array(0.05, 0.08, 0.12, 0.16, 0.21)
+AllowedSlots = PackedInt32Array(0, 5, 6)
 IsPercent = true
 Integer = false

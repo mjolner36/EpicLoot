@@ -48,13 +48,21 @@ public partial class ResultScreen : CanvasLayer
 	private static string ItemList(IEnumerable<ItemInstance> items) =>
 		string.Join("\n", items.Select(i => $"• [color=#{ItemText.Hex(i.Color)}]{i.Name}[/color] [color=#888888]{ItemInstance.RarityName(i.Rarity)}, ур. {i.Level}[/color]"));
 
-	private static string OrbList(Dictionary<string, int> orbs)
+	private static string MapList(IEnumerable<MapInstance> maps) =>
+		string.Join("\n", maps.Select(m => $"• [color=#{ItemText.Hex(m.Color)}]{ItemText.MapTitle(m)}[/color] [color=#888888]{ItemInstance.RarityName(m.Rarity)}[/color]"));
+
+	private static string CurrencyList(Dictionary<string, int> currency) =>
+		string.Join("\n", ItemText.CurrencyLines(currency, GameState.Instance.Items).Select(l => "• " + l));
+
+	/// <summary>Предметы, карты и валюта одним списком; "ничего", если пусто.</summary>
+	private static string LootList(IEnumerable<ItemInstance> items, IEnumerable<MapInstance> maps, Dictionary<string, int> currency)
 	{
-		var db = GameState.Instance.Items;
-		return string.Join("\n", orbs.Where(o => o.Value > 0).Select(o => $"• {db.Orb(o.Key)?.DisplayName ?? o.Key} ×{o.Value}"));
+		var parts = new[] { ItemList(items), MapList(maps), currency == null ? "" : CurrencyList(currency) }.Where(p => p.Length > 0).ToArray();
+		return parts.Length == 0 ? "ничего" : string.Join("\n", parts);
 	}
 
-	public void ShowVictory(AtlasNodeData node, bool firstTime, List<ItemInstance> stored, List<ItemInstance> lost, Dictionary<string, int> orbs)
+	public void ShowVictory(AtlasNodeData node, bool firstTime, List<ItemInstance> stored, List<ItemInstance> lost,
+		List<MapInstance> maps, List<MapInstance> lostMaps, Dictionary<string, int> currency)
 	{
 		_title.Text = "Узел пройден";
 		_title.Modulate = new Color(0.6f, 1f, 0.6f);
@@ -66,11 +74,9 @@ public partial class ResultScreen : CanvasLayer
 				? $"Открыта пассивка:\n[color=#ffd070]{node.PassiveDescription}[/color]\n"
 				: "[color=#aaaaaa]Узел уже был пройден — пассивка не выдаётся.[/color]\n";
 		}
-		text += "\n[b]Получено в тайник[/b]\n";
-		var orbText = OrbList(orbs);
-		text += stored.Count == 0 && orbText.Length == 0 ? "ничего\n" : ItemList(stored) + (stored.Count > 0 && orbText.Length > 0 ? "\n" : "") + orbText + "\n";
-		if (lost.Count > 0)
-			text += $"\n[color=#e07060][b]Не поместилось (сумка или тайник полны)[/b][/color]\n{ItemList(lost)}";
+		text += "\n[b]Получено в тайник[/b]\n" + LootList(stored, maps, currency) + "\n";
+		if (lost.Count > 0 || lostMaps.Count > 0)
+			text += $"\n[color=#e07060][b]Не поместилось (сумка или тайник полны)[/b][/color]\n{LootList(lost, lostMaps, null)}";
 		_body.Text = text.TrimEnd('\n');
 		_root.Visible = true;
 	}
@@ -82,9 +88,7 @@ public partial class ResultScreen : CanvasLayer
 		var text = node != null ? $"[center]{node.DisplayName} не пройден. Прогресс атласа сохранён.[/center]\n" : "";
 		if (bag != null)
 		{
-			var orbText = OrbList(bag.Orbs);
-			text += "\n[b]Потеряно из сумки[/b]\n";
-			text += bag.Items.Count == 0 && orbText.Length == 0 ? "ничего" : ItemList(bag.Items) + (bag.Items.Count > 0 && orbText.Length > 0 ? "\n" : "") + orbText;
+			text += "\n[b]Потеряно из сумки[/b]\n" + LootList(bag.Items, bag.Maps, bag.Currency);
 			text += "\n\n[color=#aaaaaa]Надетая экипировка не теряется.[/color]";
 		}
 		_body.Text = text;

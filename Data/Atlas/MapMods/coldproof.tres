@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MapModData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/MapModData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[sub_resource type="Resource" id="mod_0"]
+script = ExtResource("2")
+Stat = 15
+Type = 0
+Value = 0.5
+
+[resource]
+script = ExtResource("1")
+Id = "coldproof"
+DisplayName = "Холодостойкие"
+Description = "враги имеют 50% сопротивления холоду"
+EnemyModifiers = [SubResource("mod_0")]
+EnemyCountMultiplier = 1.0
+ArcherShareMultiplier = 1.0
+EliteEscort = 0
+QuantityBonus = 0.08
+RarityBonus = 0.08
+DropWeight = 1.0

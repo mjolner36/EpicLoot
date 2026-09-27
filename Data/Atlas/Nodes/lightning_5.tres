@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=9 format=3]
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
 [ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
-[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/crowd.tres" id="3"]
 
 [sub_resource type="Resource" id="mod_1"]
 script = ExtResource("2")
@@ -45,5 +44,5 @@ PassiveDescription = "Каждый 4-й удар бьёт молнией по 3 
 PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2"), SubResource("mod_3"), SubResource("mod_4"), SubResource("mod_5")]
 GrantedTags = PackedStringArray()
 SpecialId = "storm"
-LocationModifiers = [ExtResource("3")]
 ScreenPosition = Vector2(600.0, 733.0)
+Tier = 5

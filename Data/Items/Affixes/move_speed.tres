@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "move_speed"
+DisplayName = "Скорость движения"
 Text = "+{0}% к скорости движения"
 Stat = 2
 Type = 1
-TierMin = PackedFloat32Array(0.14, 0.09, 0.04)
-TierMax = PackedFloat32Array(0.18, 0.13, 0.08)
-AllowedSlots = PackedInt32Array(4, 3, 6)
+IsPrefix = false
+TierMin = PackedFloat32Array(0.03, 0.06, 0.09, 0.12, 0.16)
+TierMax = PackedFloat32Array(0.05, 0.08, 0.11, 0.15, 0.2)
+AllowedSlots = PackedInt32Array(3, 4, 6)
 IsPercent = true
 Integer = false

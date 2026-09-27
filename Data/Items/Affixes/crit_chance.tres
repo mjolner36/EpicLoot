@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "crit_chance"
+DisplayName = "Шанс крита"
 Text = "+{0}% к шансу крита"
 Stat = 8
 Type = 0
-TierMin = PackedFloat32Array(0.05, 0.03, 0.01)
-TierMax = PackedFloat32Array(0.07, 0.045, 0.025)
-AllowedSlots = PackedInt32Array(0, 5, 6, 1)
+IsPrefix = false
+TierMin = PackedFloat32Array(0.01, 0.016, 0.026, 0.036, 0.051)
+TierMax = PackedFloat32Array(0.015, 0.025, 0.035, 0.05, 0.07)
+AllowedSlots = PackedInt32Array(0, 1, 5, 6)
 IsPercent = true
 Integer = false

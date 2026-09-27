@@ -7,7 +7,7 @@ namespace EpicLoot.UI;
 
 /// <summary>
 /// Ячейка тайника или слот куклы. Перетаскивание (данные — Variant-словарь с индексом/слотом),
-/// двойной клик — надеть/снять, ПКМ — удалить, клик со взведённой сферой — крафт.
+/// двойной клик — надеть/снять, ПКМ — меню (крафт, разобрать), в режиме массовой разборки клик выделяет.
 /// </summary>
 public partial class ItemCell : Control
 {
@@ -45,21 +45,22 @@ public partial class ItemCell : Control
 		QueueRedraw();
 	}
 
+	private bool Selected => !IsDoll && Screen != null && Screen.IsSelected(StashIndex);
+
 	public override void _Draw()
 	{
 		var rect = new Rect2(Vector2.Zero, Size);
 		var item = Item;
-		bool armed = Screen?.ArmedOrb != null;
 		DrawRect(rect, item != null ? new Color(0.12f, 0.12f, 0.15f) : new Color(0.09f, 0.09f, 0.1f));
 		var font = ThemeDB.FallbackFont;
 		if (item != null)
 		{
 			var c = item.Color;
-			DrawRect(rect.Grow(-3), new Color(c.R, c.G, c.B, 0.12f));
+			DrawRect(rect.Grow(-3), new Color(c.R, c.G, c.B, Selected ? 0.35f : 0.12f));
 			DrawString(font, new Vector2(0, Size.Y * 0.5f + 5), item.Base.ShortName, HorizontalAlignment.Center, Size.X, IsDoll ? 15 : 13, c);
 			DrawString(font, new Vector2(4, Size.Y - 5), item.Level.ToString(), HorizontalAlignment.Left, -1, 11, new Color(1, 1, 1, 0.5f));
-			if (item.Corrupted) DrawString(font, new Vector2(0, 13), "✦", HorizontalAlignment.Right, Size.X - 3, 12, new Color(0.9f, 0.3f, 0.3f));
-			DrawRect(rect, armed ? new Color(0.85f, 0.7f, 1f) : c, false, item.Rarity == Rarity.Normal ? 1f : 2f);
+			if (item.Potential <= 0) DrawString(font, new Vector2(0, Size.Y - 5), "0", HorizontalAlignment.Right, Size.X - 4, 11, new Color(0.9f, 0.4f, 0.4f));
+			DrawRect(rect, Selected ? new Color(1f, 0.45f, 0.35f) : c, false, Selected ? 3f : item.Rarity == Rarity.Normal ? 1f : 2f);
 		}
 		else
 		{
@@ -78,7 +79,7 @@ public partial class ItemCell : Control
 			FitContent = true,
 			ScrollActive = false,
 			AutowrapMode = TextServer.AutowrapMode.Off,
-			CustomMinimumSize = new Vector2(320, 0),
+			CustomMinimumSize = new Vector2(340, 0),
 		};
 		var equipped = Inv.Equipped.GetValueOrDefault(item.Slot);
 		label.Text = ItemText.Describe(item) + "\n\n" + ItemText.Compare(item, equipped);
@@ -87,7 +88,7 @@ public partial class ItemCell : Control
 
 	public override Variant _GetDragData(Vector2 atPosition)
 	{
-		if (Item == null || Screen.ArmedOrb != null) return default;
+		if (Item == null || Screen.MassMode) return default;
 		var preview = new Label { Text = Item.Name, Modulate = Item.Color };
 		SetDragPreview(preview);
 		return new Godot.Collections.Dictionary { ["doll"] = IsDoll, ["index"] = StashIndex, ["slot"] = (int)DollSlot };
@@ -101,20 +102,20 @@ public partial class ItemCell : Control
 	public override void _GuiInput(InputEvent e)
 	{
 		if (e is not InputEventMouseButton { Pressed: true } mb) return;
-		if (mb.ButtonIndex == MouseButton.Left && mb.DoubleClick && Screen.ArmedOrb == null)
+		if (Screen.MassMode)
+		{
+			if (mb.ButtonIndex == MouseButton.Left && !IsDoll && Item != null) Screen.ToggleSelected(StashIndex);
+			AcceptEvent();
+			return;
+		}
+		if (mb.ButtonIndex == MouseButton.Left && mb.DoubleClick)
 		{
 			Screen.ToggleEquip(this);
 			AcceptEvent();
 		}
-		else if (mb.ButtonIndex == MouseButton.Left && Screen.ArmedOrb != null)
+		else if (mb.ButtonIndex == MouseButton.Right && Item != null)
 		{
-			Screen.ApplyArmedOrb(this);
-			AcceptEvent();
-		}
-		else if (mb.ButtonIndex == MouseButton.Right)
-		{
-			if (Screen.ArmedOrb != null) Screen.Disarm();
-			else if (!IsDoll && Item != null) Screen.AskDelete(StashIndex);
+			Screen.ShowContextMenu(this, GetGlobalMousePosition());
 			AcceptEvent();
 		}
 	}

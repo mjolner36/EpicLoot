@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MapModData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/MapModData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[resource]
+script = ExtResource("1")
+Id = "elite_escort"
+DisplayName = "Элита с эскортом"
+Description = "элитный рыцарь приходит с 5 солдатами"
+EnemyModifiers = []
+EnemyCountMultiplier = 1.0
+ArcherShareMultiplier = 1.0
+EliteEscort = 5
+QuantityBonus = 0.1
+RarityBonus = 0.15
+DropWeight = 1.0

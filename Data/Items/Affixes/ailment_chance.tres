@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "ailment_chance"
+DisplayName = "Шанс статусов"
 Text = "+{0}% к шансу статусов"
 Stat = 10
 Type = 0
-TierMin = PackedFloat32Array(0.1, 0.06, 0.02)
-TierMax = PackedFloat32Array(0.14, 0.09, 0.05)
-AllowedSlots = PackedInt32Array(0, 5, 6, 2, 3)
+IsPrefix = false
+TierMin = PackedFloat32Array(0.02, 0.05, 0.08, 0.11, 0.15)
+TierMax = PackedFloat32Array(0.04, 0.07, 0.1, 0.14, 0.2)
+AllowedSlots = PackedInt32Array(0, 2, 3, 5, 6)
 IsPercent = true
 Integer = false

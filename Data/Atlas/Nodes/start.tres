@@ -13,5 +13,5 @@ PassiveDescription = ""
 PassiveModifiers = []
 GrantedTags = PackedStringArray()
 SpecialId = ""
-LocationModifiers = []
 ScreenPosition = Vector2(600.0, 400.0)
+Tier = 0

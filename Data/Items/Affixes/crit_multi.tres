@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "crit_multi"
+DisplayName = "Урон крита"
 Text = "+{0}% к урону крита"
 Stat = 9
 Type = 0
-TierMin = PackedFloat32Array(0.3, 0.2, 0.1)
-TierMax = PackedFloat32Array(0.4, 0.29, 0.19)
-AllowedSlots = PackedInt32Array(0, 6, 5, 3)
+IsPrefix = true
+TierMin = PackedFloat32Array(0.1, 0.15, 0.2, 0.27, 0.35)
+TierMax = PackedFloat32Array(0.14, 0.19, 0.26, 0.34, 0.45)
+AllowedSlots = PackedInt32Array(0, 3, 5, 6)
 IsPercent = true
 Integer = false

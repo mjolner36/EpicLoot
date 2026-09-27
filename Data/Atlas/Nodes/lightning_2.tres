@@ -20,5 +20,5 @@ PassiveDescription = "Урон молнией даёт 25% шанс Шока"
 PassiveModifiers = [SubResource("mod_1")]
 GrantedTags = PackedStringArray()
 SpecialId = ""
-LocationModifiers = []
 ScreenPosition = Vector2(600.0, 538.6)
+Tier = 2

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
 [ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
-[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/elite_escort.tres" id="3"]
 
 [sub_resource type="Resource" id="mod_1"]
 script = ExtResource("2")
@@ -33,5 +32,5 @@ PassiveDescription = "Удары по замороженным наносят ×
 PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2"), SubResource("mod_3")]
 GrantedTags = PackedStringArray("NoIgnite")
 SpecialId = "absolute_zero"
-LocationModifiers = [ExtResource("3")]
 ScreenPosition = Vector2(1032.6, 215.0)
+Tier = 5

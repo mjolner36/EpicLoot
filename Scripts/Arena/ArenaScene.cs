@@ -91,7 +91,9 @@ public partial class ArenaScene : Node3D
 
 		_hud = new Hud { Name = "HUD" };
 		AddChild(_hud);
-		_hud.Init(Player, Spawner, Bag, SandboxMode ? "Полигон" : $"{Node?.DisplayName} · T{Map.Tier}");
+		var title = SandboxMode ? "Полигон" : $"{Node?.DisplayName} · T{Map.Tier}";
+		if (!SandboxMode && Map.Mods.Count > 0) title += "\n" + string.Join(", ", Map.Mods.Select(m => m.DisplayName));
+		_hud.Init(Player, Spawner, Bag, title);
 
 		Widgets = new EnemyWidgetLayer { Name = "EnemyWidgets", Camera = camera };
 		AddChild(Widgets);

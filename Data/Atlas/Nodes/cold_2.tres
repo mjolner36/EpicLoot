@@ -20,5 +20,5 @@ PassiveDescription = "+1 стак Холода за попадание"
 PassiveModifiers = [SubResource("mod_1")]
 GrantedTags = PackedStringArray()
 SpecialId = ""
-LocationModifiers = []
 ScreenPosition = Vector2(780.0, 323.0)
+Tier = 2

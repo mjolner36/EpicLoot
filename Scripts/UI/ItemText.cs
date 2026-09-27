@@ -6,7 +6,7 @@ using EpicLoot.Stats;
 
 namespace EpicLoot.UI;
 
-/// <summary>Тексты предметов для тултипов, экранов результата и сравнения с надетым.</summary>
+/// <summary>Тексты предметов и карт для тултипов, экранов результата и сравнения с надетым.</summary>
 public static class ItemText
 {
 	public static readonly Dictionary<StatType, string> StatNames = new()
@@ -53,6 +53,21 @@ public static class ItemText
 	public static string AffixLine(AffixRoll a) =>
 		string.Format(a.Affix.Text, Num(a.Value, a.Affix.IsPercent, a.Affix.Integer));
 
+	/// <summary>Диапазон тира: "14-19%" или "20-29".</summary>
+	public static string TierRange(AffixData a, int tier)
+	{
+		float min = a.TierMin[tier - 1], max = a.TierMax[tier - 1];
+		if (min > max) (min, max) = (max, min);
+		var lo = Num(min, a.IsPercent, a.Integer);
+		var hi = Num(max, a.IsPercent, a.Integer);
+		return (lo == hi ? lo : $"{lo}-{hi}") + (a.IsPercent ? "%" : "");
+	}
+
+	/// <summary>Строка аффикса для тултипа: "T3 +16% к урону огнём (14-19%)".</summary>
+	public static string AffixFull(AffixRoll a) => $"T{a.Tier} {AffixLine(a)} ({TierRange(a.Affix, a.Tier)})";
+
+	public static string TierColor(int tier) => tier >= 5 ? "c77dff" : tier >= 4 ? "ffd070" : "8fb8ff";
+
 	/// <summary>Полное описание предмета в BBCode.</summary>
 	public static string Describe(ItemInstance item)
 	{
@@ -62,11 +77,39 @@ public static class ItemText
 		var baseLine = BaseLine(item);
 		if (baseLine.Length > 0) sb.Append($"{baseLine}\n");
 		if (item.Affixes.Count > 0) sb.Append("[color=#666666]──────────[/color]\n");
-		foreach (var a in item.Affixes)
-			sb.Append($"[color=#8fb8ff]{AffixLine(a)}[/color] [color=#777777]T{a.Tier}[/color]\n");
-		if (item.Corrupted) sb.Append("[color=#e05050]Осквернён[/color]\n");
+		foreach (var a in item.Affixes.OrderBy(a => !a.Affix.IsPrefix))
+			sb.Append($"[color=#{TierColor(a.Tier)}]{AffixFull(a)}[/color]\n");
+		sb.Append($"[color=#666666]──────────[/color]\n[color=#aaaaaa]Потенциал ковки: {item.Potential}[/color]\n");
 		return sb.ToString().TrimEnd('\n');
 	}
+
+	/// <summary>Мод карты одной строкой с бонусами к луту.</summary>
+	public static string MapModLine(Atlas.MapModData m) =>
+		$"{m.DisplayName}: {m.Description} [color=#88dd88](+{m.QuantityBonus * 100:0}% кол., +{m.RarityBonus * 100:0}% редк.)[/color]";
+
+	/// <summary>Суммарный бонус карты к луту.</summary>
+	public static string MapBonus(MapInstance map) =>
+		$"Количество лута +{map.Quantity * 100:0}% · редкость лута +{map.RarityBonus * 100:0}%";
+
+	public static string MapTitle(MapInstance map) => $"Карта: {map.Name} T{map.Tier}";
+
+	/// <summary>Полное описание карты в BBCode.</summary>
+	public static string DescribeMap(MapInstance map)
+	{
+		var sb = new StringBuilder();
+		sb.Append($"[b][color=#{Hex(map.Color)}]{MapTitle(map)}[/color][/b]\n");
+		sb.Append($"[color=#aaaaaa]{ItemInstance.RarityName(map.Rarity)} · {map.Node.TypeName}[/color]\n");
+		if (map.Mods.Count == 0) sb.Append("[color=#888888]Без модов[/color]\n");
+		foreach (var m in map.Mods) sb.Append($"• {MapModLine(m)}\n");
+		sb.Append(MapBonus(map));
+		return sb.ToString();
+	}
+
+	/// <summary>Валюта крафта списком строк "Осколок: Жизнь ×2" в порядке базы.</summary>
+	public static IEnumerable<string> CurrencyLines(IReadOnlyDictionary<string, int> currency, ItemDatabase db) =>
+		currency.Where(c => c.Value > 0)
+			.OrderBy(c => db.Currency.FindIndex(x => x.Id == c.Key))
+			.Select(c => $"{db.Currencies(c.Key)?.DisplayName ?? c.Key} ×{c.Value}");
 
 	private static Dictionary<(StatType, ModifierType), float> Sum(ItemInstance item)
 	{

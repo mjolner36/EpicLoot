@@ -135,13 +135,17 @@ public partial class Hud : CanvasLayer
 	private void RefreshBag()
 	{
 		if (_bag == null) return;
-		_bagLabel.Text = $"Сумка {_bag.Items.Count}/{_bag.Capacity}" + (_bag.OrbTotal > 0 ? $" · Сферы {_bag.OrbTotal}" : "") + (_bag.IsFull ? " · полна" : "");
-		var text = $"[b]Сумка забега {_bag.Items.Count}/{_bag.Capacity}[/b]\n";
-		if (_bag.Items.Count == 0 && _bag.OrbTotal == 0) text += "[color=#888888]пусто[/color]\n";
+		var db = GameState.Instance.Items;
+		int currency = _bag.CurrencyTotal;
+		_bagLabel.Text = $"Сумка {_bag.Used}/{_bag.Capacity}" + (currency > 0 ? $" · Валюта {currency}" : "") + (_bag.IsFull ? " · полна" : "");
+		var text = $"[b]Сумка забега {_bag.Used}/{_bag.Capacity}[/b]\n";
+		if (_bag.Used == 0 && currency == 0) text += "[color=#888888]пусто[/color]\n";
 		foreach (var item in _bag.Items)
 			text += $"[color=#{ItemText.Hex(item.Color)}]{item.Name}[/color] [color=#888888]ур. {item.Level}[/color]\n";
-		foreach (var (id, n) in _bag.Orbs)
-			text += $"{GameState.Instance.Items.Orb(id)?.DisplayName ?? id} ×{n}\n";
+		foreach (var map in _bag.Maps)
+			text += $"[color=#{ItemText.Hex(map.Color)}]{ItemText.MapTitle(map)}[/color]\n";
+		foreach (var line in ItemText.CurrencyLines(_bag.Currency, db))
+			text += line + "\n";
 		text += "\n[color=#888888]Лут переходит в тайник только при победе.[/color]";
 		_bagText.Text = text;
 	}

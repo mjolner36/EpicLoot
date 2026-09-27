@@ -36,6 +36,9 @@ public partial class AtlasScreen : Control
 		_passives = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
 		_passives.AddThemeConstantOverride("separation", 6);
 		scroll.AddChild(_passives);
+		var device = new Button { Text = "Устройство карт", CustomMinimumSize = new Vector2(0, 44) };
+		device.Pressed += () => _panel.ShowDevice();
+		sideBox.AddChild(device);
 		var inventory = new Button { Text = "Инвентарь (I)", CustomMinimumSize = new Vector2(0, 44) };
 		inventory.Pressed += () => Inventory.Open();
 		sideBox.AddChild(inventory);
@@ -49,14 +52,11 @@ public partial class AtlasScreen : Control
 
 		_view = new AtlasView { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
 		split.AddChild(_view);
-		_view.NodeClicked += node =>
-		{
-			if (GameState.Instance.CanEnter(node.Id)) _panel.ShowNode(node);
-		};
+		_view.NodeClicked += node => _panel.ShowNode(node);
 
-		var hint = new Label { Text = "Выберите подсвеченный узел рядом с пройденными", Modulate = new Color(1, 1, 1, 0.55f) };
+		var hint = new Label { Text = "Центр атласа — устройство карт. Карты T1 открываются бесплатно кликом по узлу.", Modulate = new Color(1, 1, 1, 0.55f) };
 		hint.SetAnchorsPreset(LayoutPreset.CenterBottom);
-		hint.Position = new Vector2(-150, -40);
+		hint.Position = new Vector2(-280, -40);
 		AddChild(hint);
 
 		var center = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
@@ -67,14 +67,30 @@ public partial class AtlasScreen : Control
 
 		Inventory = new InventoryScreen { Name = "Inventory" };
 		AddChild(Inventory);
+		Inventory.MapToDevice += map =>
+		{
+			Inventory.Close();
+			_panel.ShowDevice(map);
+		};
+		_panel.CraftMapRequested += map => Inventory.OpenCraft(map);
 
 		EventBus.Instance.AtlasChanged += Refresh;
+		GameState.Instance.Profile.Changed += OnProfileChanged;
 		Refresh();
 	}
+
+	public NodePanel Panel => _panel;
 
 	public override void _ExitTree()
 	{
 		EventBus.Instance.AtlasChanged -= Refresh;
+		GameState.Instance.Profile.Changed -= OnProfileChanged;
+	}
+
+	private void OnProfileChanged()
+	{
+		_view.Refresh();
+		_panel.Refresh();
 	}
 
 	public override void _UnhandledInput(InputEvent e)

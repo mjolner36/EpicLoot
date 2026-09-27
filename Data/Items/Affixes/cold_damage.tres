@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1")
 Id = "cold_damage"
+DisplayName = "Урон холодом"
 Text = "+{0}% к урону холодом"
 Stat = 5
 Type = 1
-TierMin = PackedFloat32Array(0.25, 0.15, 0.06)
-TierMax = PackedFloat32Array(0.35, 0.24, 0.14)
-AllowedSlots = PackedInt32Array(0, 5, 6, 1)
+IsPrefix = true
+TierMin = PackedFloat32Array(0.05, 0.09, 0.14, 0.2, 0.27)
+TierMax = PackedFloat32Array(0.08, 0.13, 0.19, 0.26, 0.35)
+AllowedSlots = PackedInt32Array(0, 1, 5, 6)
 IsPercent = true
 Integer = false
