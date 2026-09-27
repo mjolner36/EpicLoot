@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemBaseData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemBaseData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "amulet"
+DisplayName = "Амулет"
+ShortName = "Амулет"
+Slot = 6
+BaseStat = 3
+BaseType = 1
+BaseMin = 0.05
+BaseMax = 0.05
+BaseText = "+{0}% ко всему урону"
+BaseIsPercent = true
+ModelPart = ""

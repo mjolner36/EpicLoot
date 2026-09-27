@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Skills/SkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "dash"
+DisplayName = "Рывок"
+KeyLabel = "Пробел"
+Kind = 3
+Tags = PackedStringArray()
+Color = Color(0.7, 0.7, 0.8, 1.0)
+Cooldown = 3.0
+CastTime = 0.0
+CastMoveMultiplier = 1.0
+DashDistance = 5.0
+DashDuration = 0.15

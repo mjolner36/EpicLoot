@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "crit_multi"
+Text = "+{0}% к урону крита"
+Stat = 9
+Type = 0
+TierMin = PackedFloat32Array(0.3, 0.2, 0.1)
+TierMax = PackedFloat32Array(0.4, 0.29, 0.19)
+AllowedSlots = PackedInt32Array(0, 6, 5, 3)
+IsPercent = true
+Integer = false

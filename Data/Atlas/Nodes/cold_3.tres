@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/brittle_bones.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 23
+Type = 0
+Value = 2.0
+
+[resource]
+script = ExtResource("1")
+Id = "cold_3"
+DisplayName = "Ледяная хватка"
+Type = 2
+Branch = 2
+Neighbors = PackedStringArray("cold_2", "cold_4")
+PassiveDescription = "Заморозка наступает на 3 стаках вместо 5"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = "icy_grip"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(864.2, 287.0)

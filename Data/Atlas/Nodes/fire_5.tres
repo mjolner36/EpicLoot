@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/fireproof.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 25
+Type = 0
+Value = 0.5
+
+[resource]
+script = ExtResource("1")
+Id = "fire_5"
+DisplayName = "Вечное пламя"
+Type = 3
+Branch = 1
+Neighbors = PackedStringArray("fire_4")
+PassiveDescription = "50% урона всех умений добавляется как огонь, но Холод больше не накладывается"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray("NoChill")
+SpecialId = "eternal_flame"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(167.4, 215.0)

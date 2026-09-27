@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LocationModifierData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/LocationModifierData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "elite_escort"
+DisplayName = "Элита с эскортом"
+Description = "элитный рыцарь приходит с 5 солдатами"
+EnemyModifiers = []
+EnemyCountMultiplier = 1.0
+EliteEscort = 5

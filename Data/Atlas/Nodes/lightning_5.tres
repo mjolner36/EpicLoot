@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/crowd.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 34
+Type = 0
+Value = 4.0
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 35
+Type = 0
+Value = 3.0
+
+[sub_resource type="Resource" id="mod_3"]
+script = ExtResource("2")
+Stat = 36
+Type = 0
+Value = 20.0
+
+[sub_resource type="Resource" id="mod_4"]
+script = ExtResource("2")
+Stat = 37
+Type = 0
+Value = 8.0
+
+[sub_resource type="Resource" id="mod_5"]
+script = ExtResource("2")
+Stat = 1
+Type = 2
+Value = -0.3
+
+[resource]
+script = ExtResource("1")
+Id = "lightning_5"
+DisplayName = "Гроза"
+Type = 3
+Branch = 3
+Neighbors = PackedStringArray("lightning_4")
+PassiveDescription = "Каждый 4-й удар бьёт молнией по 3 врагам рядом, но −30% жизни"
+PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2"), SubResource("mod_3"), SubResource("mod_4"), SubResource("mod_5")]
+GrantedTags = PackedStringArray()
+SpecialId = "storm"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(600.0, 733.0)

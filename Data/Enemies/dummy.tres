@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "dummy"
+DisplayName = "Манекен"
+Tags = PackedStringArray()
+MaxLife = 400.0
+MoveSpeed = 0.0
+ExtraStats = {
+
+}
+AttackKind = 0
+AttackDamage = 0.0
+Scale = 1.0
+BodyColor = Color(0.6, 0.5, 0.35, 1.0)
+AccentColor = Color(0.3, 0.25, 0.2, 1.0)
+VisibleParts = PackedStringArray()

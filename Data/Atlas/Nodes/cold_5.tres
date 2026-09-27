@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/elite_escort.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 30
+Type = 2
+Value = 1.0
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 31
+Type = 0
+Value = 0.5
+
+[sub_resource type="Resource" id="mod_3"]
+script = ExtResource("2")
+Stat = 32
+Type = 0
+Value = 2.0
+
+[resource]
+script = ExtResource("1")
+Id = "cold_5"
+DisplayName = "Абсолютный ноль"
+Type = 3
+Branch = 2
+Neighbors = PackedStringArray("cold_4")
+PassiveDescription = "Удары по замороженным наносят ×2 и раскалывают их (50% урона соседям в 2 м), но Поджог невозможен"
+PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2"), SubResource("mod_3")]
+GrantedTags = PackedStringArray("NoIgnite")
+SpecialId = "absolute_zero"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(1032.6, 215.0)

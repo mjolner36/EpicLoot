@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Skills/SkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "sword_strike"
+DisplayName = "Удар мечом"
+KeyLabel = "ЛКМ"
+Kind = 0
+Tags = PackedStringArray("Melee")
+Color = Color(0.9, 0.9, 0.9, 1.0)
+PhysicalDamage = 12.0
+Cooldown = 0.5
+CastTime = 0.2
+CastMoveMultiplier = 0.5
+Radius = 2.0
+Angle = 90.0
+AddedLightningStat = 26
+BaseDamageStat = 38

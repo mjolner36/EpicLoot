@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Core/PlayerData.cs" id="1"]
+[ext_resource type="Resource" path="res://Data/Skills/sword_strike.tres" id="2"]
+[ext_resource type="Resource" path="res://Data/Skills/ice_shard.tres" id="3"]
+[ext_resource type="Resource" path="res://Data/Skills/fire_blast.tres" id="4"]
+[ext_resource type="Resource" path="res://Data/Skills/dash.tres" id="5"]
+
+[resource]
+script = ExtResource("1")
+BaseStats = {
+"MaxLife": 100.0,
+"MoveSpeed": 5.0,
+"Damage": 1.0,
+"FireDamage": 1.0,
+"ColdDamage": 1.0,
+"LightningDamage": 1.0,
+"AttackSpeed": 1.0,
+"CritChance": 0.05,
+"CritMultiplier": 1.5,
+"AilmentChance": 0.0,
+"AilmentDuration": 1.0,
+"DashCharges": 1.0,
+"Armour": 0.0,
+"ChillStacksPerHit": 1.0
+}
+Skills = [ExtResource("2"), ExtResource("3"), ExtResource("4")]
+Dash = ExtResource("5")
+BodyColor = Color(0.88, 0.86, 0.8, 1.0)
+AccentColor = Color(0.2, 0.95, 1.0, 1.0)

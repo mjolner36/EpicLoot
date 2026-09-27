@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "start"
+DisplayName = "Врата"
+Type = 0
+Branch = 0
+Neighbors = PackedStringArray("fire_1", "cold_1", "lightning_1")
+PassiveDescription = ""
+PassiveModifiers = []
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = []
+ScreenPosition = Vector2(600.0, 400.0)

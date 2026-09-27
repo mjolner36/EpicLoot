@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OrbData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/OrbData.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/UI/icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="icon_chaos"]
+atlas = ExtResource("2")
+region = Rect2(280, 0, 40, 40)
+
+[resource]
+script = ExtResource("1")
+Id = "chaos"
+DisplayName = "Сфера хаоса"
+Description = "Перебрасывает аффиксы редкого предмета"
+Action = 3
+Icon = SubResource("icon_chaos")
+DropWeight = 10.0
+SortOrder = 3

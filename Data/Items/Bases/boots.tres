@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemBaseData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemBaseData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "boots"
+DisplayName = "Сапоги"
+ShortName = "Сапоги"
+Slot = 4
+BaseStat = 2
+BaseType = 1
+BaseMin = 0.05
+BaseMax = 0.1
+BaseText = "+{0}% к скорости движения"
+BaseIsPercent = true
+ModelPart = "SK_Boots"

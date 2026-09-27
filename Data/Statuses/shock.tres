@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="StatusData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Stats/StatusData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/UI/icons.png" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 17
+Type = 1
+Value = 0.2
+
+[sub_resource type="AtlasTexture" id="icon_shock"]
+atlas = ExtResource("3")
+region = Rect2(120, 0, 40, 40)
+
+[resource]
+script = ExtResource("1")
+Id = "shock"
+DisplayName = "Шок"
+Tag = "Shocked"
+Duration = 4.0
+MaxStacks = 1
+Modifiers = [SubResource("mod_1")]
+OverlayColor = Color(1.0, 0.92, 0.2, 1.0)
+IconText = "Ш"
+OverlayPriority = 3
+DamageType = 3
+Icon = SubResource("icon_shock")
+ApplyText = "Шок!"
+OverlayEffect = 2

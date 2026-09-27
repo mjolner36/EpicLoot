@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemBaseData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemBaseData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "ring"
+DisplayName = "Кольцо"
+ShortName = "Кольцо"
+Slot = 5
+BaseStat = 0
+BaseType = 0
+BaseMin = 0.0
+BaseMax = 0.0
+BaseText = ""
+BaseIsPercent = false
+ModelPart = ""

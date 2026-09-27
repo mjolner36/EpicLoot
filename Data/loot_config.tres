@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="LootConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/LootConfig.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+BasesDir = "res://Data/Items/Bases"
+AffixesDir = "res://Data/Items/Affixes"
+OrbsDir = "res://Data/Items/Orbs"
+StarterEquipment = PackedStringArray("sword")
+RarityWeights = PackedFloat32Array(70.0, 25.0, 5.0)
+MagicAffixMin = 1
+MagicAffixMax = 2
+RareAffixMin = 3
+RareAffixMax = 4
+TierMinLevel = PackedInt32Array(5, 3, 1)
+CorruptionWeights = PackedFloat32Array(25.0, 25.0, 25.0, 25.0)
+BagSize = 12
+StashColumns = 10
+StashRows = 6
+PickupRadius = 1.2
+ClickPickupRange = 4.0
+ClickPickupTolerance = 1.0
+KeystoneItems = 3
+KeystoneMinRarity = 2
+KeystoneOrbs = 3

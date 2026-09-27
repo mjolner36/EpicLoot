@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "knight"
+DisplayName = "Элитный рыцарь"
+Tags = PackedStringArray("Elite")
+MaxLife = 200.0
+MoveSpeed = 2.5
+ExtraStats = {
+
+}
+AttackKind = 3
+AttackDamage = 20.0
+AttackRange = 2.8
+AttackInterval = 3.0
+AttackWindup = 0.2
+AoeRadius = 3.5
+TelegraphTime = 1.0
+Scale = 1.4
+BodyColor = Color(0.45, 0.08, 0.08, 1.0)
+AccentColor = Color(1.0, 0.3, 0.1, 1.0)
+GuaranteedItems = 2
+GuaranteedMinRarity = 1
+GuaranteedOrbs = 1
+VisibleParts = PackedStringArray("SK_Helmet", "SK_Tunic", "SK_Belt", "SK_Boots", "Sword")

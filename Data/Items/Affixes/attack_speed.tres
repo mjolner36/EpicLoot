@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "attack_speed"
+Text = "+{0}% к скорости умений"
+Stat = 7
+Type = 1
+TierMin = PackedFloat32Array(0.12, 0.08, 0.04)
+TierMax = PackedFloat32Array(0.16, 0.11, 0.07)
+AllowedSlots = PackedInt32Array(0, 5, 6, 2)
+IsPercent = true
+Integer = false

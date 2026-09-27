@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="LocationModifierData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/LocationModifierData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 17
+Type = 1
+Value = 0.2
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 3
+Type = 1
+Value = 0.2
+
+[resource]
+script = ExtResource("1")
+Id = "brittle_bones"
+DisplayName = "Хрупкие кости"
+Description = "враги получают +20% урона, но наносят +20% урона"
+EnemyModifiers = [SubResource("mod_1"), SubResource("mod_2")]
+EnemyCountMultiplier = 1.0
+EliteEscort = 0

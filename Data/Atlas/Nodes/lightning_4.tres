@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/brittle_bones.tres" id="3"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/crowd.tres" id="4"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 12
+Type = 0
+Value = 1.0
+
+[resource]
+script = ExtResource("1")
+Id = "lightning_4"
+DisplayName = "Громовая башня"
+Type = 1
+Branch = 3
+Neighbors = PackedStringArray("lightning_3", "lightning_5")
+PassiveDescription = "+1 заряд рывка"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = [ExtResource("3"), ExtResource("4")]
+ScreenPosition = Vector2(600.0, 668.2)

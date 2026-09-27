@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/fast_dead.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 27
+Type = 0
+Value = 0.5
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 29
+Type = 0
+Value = 2.0
+
+[resource]
+script = ExtResource("1")
+Id = "lightning_3"
+DisplayName = "Разряд"
+Type = 2
+Branch = 3
+Neighbors = PackedStringArray("lightning_2", "lightning_4")
+PassiveDescription = "Ледяной осколок добавляет 50% урона как молния и перескакивает на 2 цели"
+PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2")]
+GrantedTags = PackedStringArray()
+SpecialId = "discharge"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(600.0, 603.4)

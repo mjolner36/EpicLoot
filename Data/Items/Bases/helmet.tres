@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemBaseData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemBaseData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "helmet"
+DisplayName = "Шлем"
+ShortName = "Шлем"
+Slot = 1
+BaseStat = 1
+BaseType = 0
+BaseMin = 10.0
+BaseMax = 20.0
+BaseText = "+{0} к жизни"
+BaseIsPercent = false
+ModelPart = "SK_Helmet"

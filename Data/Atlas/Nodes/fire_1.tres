@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 4
+Type = 1
+Value = 0.15
+
+[resource]
+script = ExtResource("1")
+Id = "fire_1"
+DisplayName = "Тлеющий склеп"
+Type = 1
+Branch = 1
+Neighbors = PackedStringArray("start", "fire_2")
+PassiveDescription = "+15% урона огнём"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = []
+ScreenPosition = Vector2(504.1, 359.0)

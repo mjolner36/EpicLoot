@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="StatusData" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Stats/StatusData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/UI/icons.png" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 2
+Type = 2
+Value = -0.3
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 7
+Type = 2
+Value = -0.3
+
+[sub_resource type="AtlasTexture" id="icon_chill"]
+atlas = ExtResource("3")
+region = Rect2(40, 0, 40, 40)
+
+[resource]
+script = ExtResource("1")
+Id = "chill"
+DisplayName = "Холод"
+Tag = "Chilled"
+Duration = 3.0
+MaxStacks = 5
+Modifiers = [SubResource("mod_1"), SubResource("mod_2")]
+OverlayColor = Color(0.45, 0.8, 1.0, 1.0)
+IconText = "Х"
+OverlayPriority = 1
+DamageType = 2
+Icon = SubResource("icon_chill")
+ApplyText = ""
+OverlayEffect = 0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "fire_blast_cdr"
+Text = "{0}% к кулдауну Огненного взрыва"
+Stat = 24
+Type = 1
+TierMin = PackedFloat32Array(-0.2, -0.15, -0.09)
+TierMax = PackedFloat32Array(-0.16, -0.1, -0.05)
+AllowedSlots = PackedInt32Array(1, 6, 5, 3)
+IsPercent = true
+Integer = false

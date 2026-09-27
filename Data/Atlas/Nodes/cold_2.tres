@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 22
+Type = 0
+Value = 1.0
+
+[resource]
+script = ExtResource("1")
+Id = "cold_2"
+DisplayName = "Мёрзлый ров"
+Type = 1
+Branch = 2
+Neighbors = PackedStringArray("cold_1", "cold_3")
+PassiveDescription = "+1 стак Холода за попадание"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = []
+ScreenPosition = Vector2(780.0, 323.0)

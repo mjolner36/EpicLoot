@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "ailment_duration"
+Text = "+{0}% к длительности статусов"
+Stat = 11
+Type = 1
+TierMin = PackedFloat32Array(0.25, 0.15, 0.06)
+TierMax = PackedFloat32Array(0.35, 0.24, 0.14)
+AllowedSlots = PackedInt32Array(5, 6, 2, 3, 1, 4)
+IsPercent = true
+Integer = false

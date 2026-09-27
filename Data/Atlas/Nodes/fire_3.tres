@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/crowd.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 21
+Type = 1
+Value = 0.5
+
+[sub_resource type="Resource" id="mod_2"]
+script = ExtResource("2")
+Stat = 33
+Type = 0
+Value = 2.0
+
+[resource]
+script = ExtResource("1")
+Id = "fire_3"
+DisplayName = "Пожарище"
+Type = 2
+Branch = 1
+Neighbors = PackedStringArray("fire_2", "fire_4")
+PassiveDescription = "Поджог длится на 50% дольше и переходит на врагов в 2 м при смерти цели"
+PassiveModifiers = [SubResource("mod_1"), SubResource("mod_2")]
+GrantedTags = PackedStringArray()
+SpecialId = "ignite_spread"
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(335.8, 287.0)

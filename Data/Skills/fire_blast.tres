@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Skills/SkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "fire_blast"
+DisplayName = "Огненный взрыв"
+KeyLabel = "Q"
+Kind = 2
+Tags = PackedStringArray("Area", "Fire")
+Color = Color(1.0, 0.45, 0.1, 1.0)
+FireDamage = 25.0
+IgniteChance = 0.4
+Cooldown = 6.0
+CastTime = 0.3
+CastMoveMultiplier = 0.5
+Radius = 3.0
+Range = 12.0
+CooldownStat = 24

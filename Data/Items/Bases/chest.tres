@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemBaseData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/ItemBaseData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "chest"
+DisplayName = "Нагрудник"
+ShortName = "Нагр."
+Slot = 2
+BaseStat = 13
+BaseType = 0
+BaseMin = 20.0
+BaseMax = 40.0
+BaseText = "+{0} к броне"
+BaseIsPercent = false
+ModelPart = "SK_Tunic"

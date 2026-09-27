@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="StatusData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Stats/StatusData.cs" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/UI/icons.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="icon_freeze"]
+atlas = ExtResource("2")
+region = Rect2(80, 0, 40, 40)
+
+[resource]
+script = ExtResource("1")
+Id = "freeze"
+DisplayName = "Заморозка"
+Tag = "Frozen"
+Duration = 1.5
+MaxStacks = 1
+Modifiers = []
+OverlayColor = Color(0.95, 0.97, 1.0, 1.0)
+IconText = "З"
+OverlayPriority = 4
+DamageType = 2
+Icon = SubResource("icon_freeze")
+ApplyText = "Заморожен!"
+OverlayEffect = 0

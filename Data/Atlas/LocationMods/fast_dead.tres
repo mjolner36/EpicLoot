@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LocationModifierData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/LocationModifierData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 2
+Type = 1
+Value = 0.25
+
+[resource]
+script = ExtResource("1")
+Id = "fast_dead"
+DisplayName = "Быстрые мертвецы"
+Description = "+25% скорости врагов"
+EnemyModifiers = [SubResource("mod_1")]
+EnemyCountMultiplier = 1.0
+EliteEscort = 0

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "shard_projectile"
+Text = "+{0} снаряд Ледяного осколка"
+Stat = 39
+Type = 0
+TierMin = PackedFloat32Array(1.0, 1.0, 1.0)
+TierMax = PackedFloat32Array(1.0, 1.0, 1.0)
+AllowedSlots = PackedInt32Array(0, 1, 6)
+IsPercent = false
+Integer = true

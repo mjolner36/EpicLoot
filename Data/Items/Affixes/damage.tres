@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AffixData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Items/AffixData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "damage"
+Text = "+{0}% ко всему урону"
+Stat = 3
+Type = 1
+TierMin = PackedFloat32Array(0.14, 0.09, 0.04)
+TierMax = PackedFloat32Array(0.18, 0.13, 0.08)
+AllowedSlots = PackedInt32Array(0, 6, 5)
+IsPercent = true
+Integer = false

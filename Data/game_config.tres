@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="GameConfig" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Core/GameConfig.cs" id="1"]
+[ext_resource type="Resource" path="res://Data/player_data.tres" id="2"]
+[ext_resource type="Resource" path="res://Data/loot_config.tres" id="3"]
+[ext_resource type="Resource" path="res://Data/Statuses/ignite.tres" id="4"]
+[ext_resource type="Resource" path="res://Data/Statuses/chill.tres" id="5"]
+[ext_resource type="Resource" path="res://Data/Statuses/freeze.tres" id="6"]
+[ext_resource type="Resource" path="res://Data/Statuses/shock.tres" id="7"]
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Soldier.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Archer.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Knight.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Dummy.tscn" id="12"]
+
+[resource]
+script = ExtResource("1")
+Player = ExtResource("2")
+Loot = ExtResource("3")
+Ignite = ExtResource("4")
+Chill = ExtResource("5")
+Freeze = ExtResource("6")
+Shock = ExtResource("7")
+PlayerScene = ExtResource("8")
+SoldierScene = ExtResource("9")
+ArcherScene = ExtResource("10")
+KnightScene = ExtResource("11")
+DummyScene = ExtResource("12")
+AtlasNodesDir = "res://Data/Atlas/Nodes"
+StartNodeId = "start"
+ArmourFactor = 5.0
+MaxResistance = 0.75
+WaveSizes = PackedInt32Array(10, 15, 20)
+NextWaveThreshold = 3
+ArcherShare = 0.3
+SpawnInterval = 0.12
+FirstWaveDelay = 1.0
+StressSpawnCount = 60
+DifficultyPerStep = 0.15
+KeystoneLifeMultiplier = 3.0
+KeystoneEscort = 5
+ArenaSize = 40.0
+ObstacleMin = 6
+ObstacleMax = 10
+SpawnInset = 3.0
+CameraSize = 24.0
+CameraPitch = -45.0
+CameraYaw = 45.0
+CameraDistance = 30.0

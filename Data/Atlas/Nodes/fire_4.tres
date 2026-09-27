@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/fireproof.tres" id="3"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/brittle_bones.tres" id="4"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 24
+Type = 1
+Value = -0.2
+
+[resource]
+script = ExtResource("1")
+Id = "fire_4"
+DisplayName = "Горящие катакомбы"
+Type = 1
+Branch = 1
+Neighbors = PackedStringArray("fire_3", "fire_5")
+PassiveDescription = "−20% кулдауна Огненного взрыва"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = [ExtResource("3"), ExtResource("4")]
+ScreenPosition = Vector2(251.6, 251.0)

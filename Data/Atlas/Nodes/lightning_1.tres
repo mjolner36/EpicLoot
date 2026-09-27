@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AtlasNodeData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Atlas/AtlasNodeData.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/Stats/Modifier.cs" id="2"]
+[ext_resource type="Resource" path="res://Data/Atlas/LocationMods/crowd.tres" id="3"]
+
+[sub_resource type="Resource" id="mod_1"]
+script = ExtResource("2")
+Stat = 26
+Type = 0
+Value = 0.3
+
+[resource]
+script = ExtResource("1")
+Id = "lightning_1"
+DisplayName = "Грозовой курган"
+Type = 1
+Branch = 3
+Neighbors = PackedStringArray("start", "lightning_2")
+PassiveDescription = "Удар мечом добавляет 30% урона как молния"
+PassiveModifiers = [SubResource("mod_1")]
+GrantedTags = PackedStringArray()
+SpecialId = ""
+LocationModifiers = [ExtResource("3")]
+ScreenPosition = Vector2(600.0, 473.8)

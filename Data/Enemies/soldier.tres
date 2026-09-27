@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+Id = "soldier"
+DisplayName = "Скелет-солдат"
+Tags = PackedStringArray()
+MaxLife = 30.0
+MoveSpeed = 3.5
+ExtraStats = {
+
+}
+AttackKind = 1
+AttackDamage = 8.0
+AttackRange = 1.6
+AttackInterval = 1.2
+AttackWindup = 0.35
+Scale = 0.9
+BodyColor = Color(0.58, 0.55, 0.5, 1.0)
+AccentColor = Color(0.3, 0.25, 0.2, 1.0)
+ItemDropChance = 0.04
+OrbDropChance = 0.03
+VisibleParts = PackedStringArray("SK_Helmet", "SK_Tunic", "SK_Boots", "Sword")
